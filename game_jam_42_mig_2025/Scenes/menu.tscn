@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh68if8874lq0"]
+
+[ext_resource type="Script" path="res://Scripts/Exit_buttom.gd" id="1_jy4b6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4c0w1"]
+font_size = 82
+
+[sub_resource type="Theme" id="Theme_afj6f"]
+default_font_size = 43
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -123.5
+offset_right = 123.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Menu" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "MENU"
+label_settings = SubResource("LabelSettings_4c0w1")
+
+[node name="Play" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = SubResource("Theme_afj6f")
+text = "PLAY"
+
+[node name="Credits" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = SubResource("Theme_afj6f")
+text = "CREDITS"
+
+[node name="Exit" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = SubResource("Theme_afj6f")
+text = "EXIT"
+script = ExtResource("1_jy4b6")
+
+[connection signal="button_down" from="GridContainer/Exit" to="GridContainer/Exit" method="_on_button_down"]
