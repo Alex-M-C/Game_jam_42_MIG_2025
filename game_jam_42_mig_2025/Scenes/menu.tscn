@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh68if8874lq0"]
+[gd_scene load_steps=6 format=3 uid="uid://dh68if8874lq0"]
 
 [ext_resource type="Script" path="res://Scripts/Exit_buttom.gd" id="1_jy4b6"]
+[ext_resource type="Script" path="res://Scripts/Play_buttom.gd" id="1_keypp"]
+[ext_resource type="Texture2D" uid="uid://cirfq2vre272f" path="res://Sprites/Backgrounds/2599.jpg" id="1_o3psm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4c0w1"]
 font_size = 82
@@ -15,6 +17,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -84.0
+offset_top = -60.0
+offset_right = 4584.0
+offset_bottom = 3226.0
+scale = Vector2(0.444129, 0.368548)
+texture = ExtResource("1_o3psm")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -41,6 +52,7 @@ layout_mode = 2
 size_flags_vertical = 6
 theme = SubResource("Theme_afj6f")
 text = "PLAY"
+script = ExtResource("1_keypp")
 
 [node name="Credits" type="Button" parent="GridContainer"]
 layout_mode = 2
@@ -55,4 +67,5 @@ theme = SubResource("Theme_afj6f")
 text = "EXIT"
 script = ExtResource("1_jy4b6")
 
+[connection signal="button_down" from="GridContainer/Play" to="GridContainer/Play" method="_on_button_down"]
 [connection signal="button_down" from="GridContainer/Exit" to="GridContainer/Exit" method="_on_button_down"]

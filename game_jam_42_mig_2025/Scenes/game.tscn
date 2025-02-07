@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj8cma3p6fn87"]
+
+[ext_resource type="Script" path="res://Scripts/Menu_buttom.gd" id="1_jse1g"]
+
+[node name="game" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1857.0
+offset_top = 6.0
+offset_right = 1914.0
+offset_bottom = 37.0
+text = "MENU"
+script = ExtResource("1_jse1g")
+
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]
