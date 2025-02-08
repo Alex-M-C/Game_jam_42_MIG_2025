@@ -1,9 +1,11 @@
-[gd_scene load_steps=1657 format=3 uid="uid://bendp5tmwcsg1"]
+[gd_scene load_steps=1659 format=3 uid="uid://bendp5tmwcsg1"]
 
 [ext_resource type="Texture2D" uid="uid://cuhr6gw2jurcu" path="res://Sprites/planets/earth.png" id="1_2ru5s"]
 [ext_resource type="Script" path="res://Scripts/planet.gd" id="1_8ndwm"]
+[ext_resource type="PackedScene" uid="uid://c3g50c8o0j6dl" path="res://Scenes/space_ships/Spaceship.tscn" id="2_cg3w1"]
 [ext_resource type="Texture2D" uid="uid://b6m00bvodv61x" path="res://Sprites/planets/mars.png" id="3_wujca"]
 [ext_resource type="Texture2D" uid="uid://25svpls7ub4k" path="res://Sprites/planets/moon.png" id="4_qphme"]
+[ext_resource type="FontFile" uid="uid://jncafd0wniem" path="res://Fonts/Game Of Squids.otf" id="6_a5l52"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udjso"]
 atlas = ExtResource("1_2ru5s")
@@ -11578,6 +11580,7 @@ radius = 101.789
 
 [node name="Planet" type="Node2D"]
 script = ExtResource("1_8ndwm")
+spaceship_scene = ExtResource("2_cg3w1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rywqt")
@@ -11589,6 +11592,15 @@ frame_progress = 0.888593
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_50le7")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -104.0
+offset_top = -181.0
+offset_right = 102.0
+offset_bottom = -111.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_a5l52")
+horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -12,11 +12,16 @@ planets = [NodePath("../Earth"), NodePath("../Mars"), NodePath("../Moon")]
 [node name="Earth" parent="." instance=ExtResource("1_jj0rg")]
 position = Vector2(748, 750)
 scale = Vector2(1.83, 1.83)
+spawn_time = 1.0
 
 [node name="Mars" parent="." instance=ExtResource("1_jj0rg")]
 position = Vector2(1540, 378)
 scale = Vector2(1.3, 1.3)
+spawn_time = 1.0
+poblation = 10
 
 [node name="Moon" parent="." instance=ExtResource("1_jj0rg")]
 position = Vector2(347, 428)
 scale = Vector2(0.835, 0.835)
+spawn_time = 0.25
+poblation = 1000
