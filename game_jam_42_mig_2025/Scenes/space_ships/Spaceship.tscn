@@ -7,6 +7,7 @@
 size = Vector2(722.13, 312.827)
 
 [node name="Spaceship" type="CharacterBody2D"]
+z_index = -1
 script = ExtResource("1_1rrn3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
