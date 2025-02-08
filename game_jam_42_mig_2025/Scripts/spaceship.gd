@@ -11,50 +11,35 @@ var offset_angle: float = 0.0  # Ángulo inicial único para cada nave
 var spaceship_sprite: Sprite2D  # Nodo de la nave (Sprite2D)
 var spaceship_textures: Array = []  # Lista para almacenar las texturas de la nave
 
-var planet_status = 0
+@export var faction: int  # 1 para humanos, 2 para enemigos
 
 func _ready():
 	add_to_group("spaceships")  # Añadir la nave al grupo
 	
-	# Ángulo inicial aleatorio para cada nave
 	offset_angle = randf() * 2 * PI  # Ángulo inicial aleatorio
 	spaceship_sprite = $Sprite2D  # Nodo Sprite2D de la nave
 	
 	var parent_node = get_parent()
-	if parent_node and parent_node.has_method("get_planet_status"):
-		planet_status = parent_node.get_planet_status()
 	
-	# Cargar las texturas de la nave en la lista
 	for i in range(NUM_FRAMES):
-		if planet_status == 1:
-			var texture = load("res://Sprites/space_ships/human_ship/frame_" + str(i) + ".png")  # Asumiendo que los archivos se llaman ship_0.png, ship_1.png, ...
-			spaceship_textures.append(texture)  # Añadir la textura a la lista
-		elif planet_status == 2:
-			var texture = load("res://Sprites/space_ships/enemy_ship/frame_" + str(i) + ".png")  # Asumiendo que los archivos se llaman ship_0.png, ship_1.png, ...
-			spaceship_textures.append(texture)  # Añadir la textura a la lista
+		if faction == 1:
+			var texture = load("res://Sprites/space_ships/human_ship/frame_" + str(i) + ".png")
+			spaceship_textures.append(texture)
+		elif faction == 2:
+			var texture = load("res://Sprites/space_ships/enemy_ship/frame_" + str(i) + ".png")
+			spaceship_textures.append(texture)
 
 func _process(delta):
-	var parent_node = get_parent()  # Obtener el nodo padre de la nave
+	var parent_node = get_parent()
 
 	if parent_node:
-		# Actualizar el ángulo según la velocidad de la órbita
-		angle += ORBIT_SPEED * delta  # Actualizar el ángulo según la velocidad
-
-		# Nueva posición en la órbita elíptica alrededor del nodo padre
-		# Utilizamos el espacio relativo a su padre
+		angle += ORBIT_SPEED * delta
 		position = Vector2(
 			ORBIT_RADIUS_X * cos(angle + offset_angle),  
 			ORBIT_RADIUS_Y * sin(angle + offset_angle)
 		)
 
-		# Cambiar la textura dependiendo del ángulo
 		var frame_index = int((angle + offset_angle) / (2 * PI) * NUM_FRAMES) % NUM_FRAMES
-		spaceship_sprite.texture = spaceship_textures[frame_index]  # Asignar la textura correspondiente
+		spaceship_sprite.texture = spaceship_textures[frame_index]
 
-		# Ajustar el z_index para simular profundidad (ocultar cuando pasa detrás del nodo padre)
-		if sin(angle + offset_angle) < 0:
-			z_index = parent_node.z_index - 1  # Detrás del nodo padre
-		else:
-			z_index = parent_node.z_index + 1  # Delante del nodo padre
-	else:
-		print("⚠️ No se encontró el nodo padre.")
+		z_index = parent_node.z_index + (1 if sin(angle + offset_angle) >= 0 else -1)
