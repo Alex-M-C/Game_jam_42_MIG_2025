@@ -15,6 +15,8 @@ var i : int = 0
 @export var spawn_time: float = 5.0  # Tiempo entre generaciones de naves
 @export var poblation: int = 42
 
+@export var planet_status: int
+
 func _ready() -> void:
 	var new_shape = CircleShape2D.new()  # Crear una nueva forma
 	new_shape.radius = area_size  # Asignar el radio deseado
@@ -22,8 +24,15 @@ func _ready() -> void:
 	
 	animated_sprite.play(get_node(".").name)
 	
-	label.add_theme_color_override("font_color", Color(0, 0, 255))  # Color azul
+	if planet_status == 0:
+			label.add_theme_color_override("font_color", Color(255, 255, 255))
+	elif planet_status == 1:
+			label.add_theme_color_override("font_color", Color(0, 0, 255))
+	elif planet_status == 2:
+			label.add_theme_color_override("font_color", Color(255, 0, 0))
+
 	label.add_theme_font_size_override("font_size", 35)
+
 	
 	# Crear y configurar el temporizador
 	var timer = Timer.new()
@@ -41,11 +50,17 @@ func _process(delta):
 
 func _draw():
 	if is_active:
+		var line_color = Color(1, 1, 1)
+		if planet_status == 1:
+			line_color = Color(0.3, 0.5, 1)
+		elif planet_status == 2:
+			line_color = Color(1, 0.3, 0.3)
+			
 		for i in range(num_lines):
 			var angle = (i * TAU / num_lines) + angle_offset
 			var start_pos = Vector2(cos(angle), sin(angle)) * (radius - 5)
 			var end_pos = Vector2(cos(angle), sin(angle)) * (radius + 5)
-			draw_line(start_pos, end_pos, Color(1, 1, 1), 2)
+			draw_line(start_pos, end_pos, line_color, 2)
 
 func _on_area_2d_mouse_entered() -> void:
 	is_active = true
@@ -67,6 +82,8 @@ func update_spaceship_count():
 	label.text = "-" + str(spaceship_count) + "-"
 
 func _on_timer_timeout():
+	if planet_status == 0:
+		return
 	if i >= poblation:
 		return
 	
@@ -74,3 +91,6 @@ func _on_timer_timeout():
 	add_child(new_spaceship)  # Ahora el nodo es el contenedor
 
 	i += 1
+	
+func get_planet_status() -> int:
+	return planet_status

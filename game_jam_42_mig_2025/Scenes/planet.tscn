@@ -11595,9 +11595,9 @@ shape = SubResource("CircleShape2D_50le7")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -104.0
-offset_top = -181.0
+offset_top = -194.0
 offset_right = 102.0
-offset_bottom = -111.0
+offset_bottom = -124.0
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("6_a5l52")
 horizontal_alignment = 1

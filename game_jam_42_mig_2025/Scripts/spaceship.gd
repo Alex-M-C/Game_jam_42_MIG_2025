@@ -11,6 +11,8 @@ var offset_angle: float = 0.0  # Ángulo inicial único para cada nave
 var spaceship_sprite: Sprite2D  # Nodo de la nave (Sprite2D)
 var spaceship_textures: Array = []  # Lista para almacenar las texturas de la nave
 
+var planet_status = 0
+
 func _ready():
 	add_to_group("spaceships")  # Añadir la nave al grupo
 	
@@ -18,10 +20,18 @@ func _ready():
 	offset_angle = randf() * 2 * PI  # Ángulo inicial aleatorio
 	spaceship_sprite = $Sprite2D  # Nodo Sprite2D de la nave
 	
+	var parent_node = get_parent()
+	if parent_node and parent_node.has_method("get_planet_status"):
+		planet_status = parent_node.get_planet_status()
+	
 	# Cargar las texturas de la nave en la lista
 	for i in range(NUM_FRAMES):
-		var texture = load("res://Sprites/space_ships/human_ship/frame_" + str(i) + ".png")  # Asumiendo que los archivos se llaman ship_0.png, ship_1.png, ...
-		spaceship_textures.append(texture)  # Añadir la textura a la lista
+		if planet_status == 1:
+			var texture = load("res://Sprites/space_ships/human_ship/frame_" + str(i) + ".png")  # Asumiendo que los archivos se llaman ship_0.png, ship_1.png, ...
+			spaceship_textures.append(texture)  # Añadir la textura a la lista
+		elif planet_status == 2:
+			var texture = load("res://Sprites/space_ships/enemy_ship/frame_" + str(i) + ".png")  # Asumiendo que los archivos se llaman ship_0.png, ship_1.png, ...
+			spaceship_textures.append(texture)  # Añadir la textura a la lista
 
 func _process(delta):
 	var parent_node = get_parent()  # Obtener el nodo padre de la nave
