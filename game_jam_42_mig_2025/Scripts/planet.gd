@@ -119,7 +119,7 @@ func _decide_new_owner():
 	i = 0  # Reiniciar la cantidad de naves generadas
 	print(" Nuevo dueño del planeta:", planet_status)
 func _on_timer_timeout():
-	if planet_status == 0 or planet_status == 3 or i >= poblation or in_battle or not _can_generate_more_ships():
+	if planet_status == 0 or planet_status == 3 or in_battle or not _can_generate_more_ships():
 		print(" Generación de naves bloqueada.")
 		return
 	var new_spaceship = spaceship_scene.instantiate()
