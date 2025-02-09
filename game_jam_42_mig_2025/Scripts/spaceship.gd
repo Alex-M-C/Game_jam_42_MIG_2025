@@ -65,10 +65,13 @@ func _process(delta):
 # Función para iniciar el viaje hacia una posición destino
 func travel_to(dest: Vector2, new_planet: Node = null) -> void:
 	destination = dest
-	target_planet = new_planet
+	target_planet = new_planet  # Guardamos el planeta destino
 	is_traveling = true
-	# Desanexa la nave del planeta actual (suponiendo que GlobalShips es un nodo para naves en tránsito)
+	# Desanexa la nave del planeta actual y la mueve al grupo de tránsito
 	var global_container = get_tree().get_root().get_node("GlobalShips")
 	if global_container:
-		get_parent().remove_child(self)
+		if get_parent() != null:
+			get_parent().remove_child(self)
+		else:
+			print("El nodo no tiene un padre.")
 		global_container.add_child(self)

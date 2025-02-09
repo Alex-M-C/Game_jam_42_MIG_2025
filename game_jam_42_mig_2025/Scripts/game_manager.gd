@@ -1,21 +1,20 @@
 extends Node2D
-var line : Line2D
-@export var planets : Array [Node2D] = []
-var start_position : Vector2
-var end_position : Vector2
-var is_drawing : bool = false
-var valid_area : Area2D = null  # Última área seleccionada
-var is_over_area : bool = false  # Indica si el ratón está sobre un área válida
+@export var planets: Array[Node2D] = []
+var start_position: Vector2
+var end_position: Vector2
+var is_drawing: bool = false
+var valid_area: Area2D = null  # Última área seleccionada
+var is_over_area: bool = false  # Indica si el ratón está sobre un área válida
+var line: Line2D
 func _ready():
 	# Crear la línea que será usada para dibujar
 	line = Line2D.new()
 	add_child(line)
 	line.default_color = Color(0.678, 0.847, 0.901, 0.75)
 	line.width = 6
-	
 	var areas: Array[Area2D] = []
 	for node in planets:
-		var area : Area2D = node.get_node("Area2D")  # Busca el Area2D dentro de cada nodo
+		var area: Area2D = node.get_node("Area2D")  # Busca el Area2D dentro de cada nodo
 		if area:
 			areas.append(area)
 	for area in areas:
@@ -44,11 +43,17 @@ func _on_area_clicked(viewport, event, shape_idx, area):
 			line.add_point(end_position)
 			await get_tree().create_timer(0.1).timeout
 			line.clear_points()
-			# Por ejemplo, obtenemos todas las naves del planeta de origen
-			for ship in get_tree().get_nodes_in_group("spaceships"):
-				# Si la nave pertenece al planeta origen, iniciar el viaje
-				# Aquí debes determinar si la nave debe viajar y posiblemente reparentarla
-				ship.travel_to(area_center)
+			# Obtener el nodo del planeta de origen
+			var origin_planet = valid_area.get_parent()
+			# Enviar solo la mitad de las naves
+			var ships_to_send = []
+			for ship in origin_planet.get_children():
+				if ship.is_in_group("spaceships") and ship.faction == 1:  # Solo enviar naves de la facción 1 (propias)
+					ships_to_send.append(ship)
+			var half_ships = ships_to_send.size() / 2
+			for j in range(half_ships):
+				var ship = ships_to_send[j]
+				ship.travel_to(area_center, area.get_parent())  # Pasa la posición y el planeta de destino
 			is_drawing = false
 			valid_area = null
 			is_over_area = false
