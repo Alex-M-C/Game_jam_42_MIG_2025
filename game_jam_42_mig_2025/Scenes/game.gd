@@ -5,6 +5,7 @@ var actualevel = 0
 
 const VICTORY_PANEL = preload("res://Scenes/menus/victory_panel.tscn")
 const DEFEAT_PANEL = preload("res://Scenes/menus/defeat_panel.tscn")
+const FINAL_SCENE = preload("res://Scenes/levels/final_scene.tscn")
 
 var current_instance: Node = null
 var active_panel: Node = null  # Variable para guardar el panel activo
@@ -35,13 +36,15 @@ func _change_level(level_index: int):
 func _process(delta: float) -> void:
 	if not current_instance:
 		return
-
-	var game_manager = current_instance.get_node("GameManager")
 	
-	if game_manager.game_over == 1:
-		_show_victory_panel()
-	elif game_manager.game_over == 2:
-		_show_defeat_panel()
+	if actualevel < 5:
+		var game_manager = current_instance.get_node("GameManager")
+		
+		if game_manager.game_over == 1:
+			_show_victory_panel()
+		elif game_manager.game_over == 2:
+			_show_defeat_panel()
+	
 
 # Muestra el panel de victoria
 func _show_victory_panel():

@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b34fsm0et5wl5"]
+
+[ext_resource type="Texture2D" uid="uid://cirfq2vre272f" path="res://Sprites/Backgrounds/2599.jpg" id="1_qudi4"]
+[ext_resource type="FontFile" uid="uid://jncafd0wniem" path="res://Fonts/Game Of Squids.otf" id="2_m0g1d"]
+[ext_resource type="Script" path="res://Scripts/Menu_buttom.gd" id="3_7kuj5"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-14, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.00006, -2.99994)
+scale = Vector2(2.27879, 1.85662)
+texture = ExtResource("1_qudi4")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -362.168
+offset_top = -296.86
+offset_right = 359.832
+offset_bottom = 214.14
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_m0g1d")
+theme_override_font_sizes/font_size = 24
+text = "ENHORABUENA, HAS CONSEGUIDO PROPAGAR TUS FESTIVIDADES A TRAVES DE TODO EL COSMOS. MARVIN ESTA ORGULLOSO DE TI"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Sprite2D"]
+offset_left = -122.981
+offset_top = 92.301
+offset_right = 128.019
+offset_bottom = 161.301
+theme_override_fonts/font = ExtResource("2_m0g1d")
+text = "RETURN HOME"
+script = ExtResource("3_7kuj5")
+
+[connection signal="button_down" from="Sprite2D/Button" to="Sprite2D/Button" method="_on_button_down"]

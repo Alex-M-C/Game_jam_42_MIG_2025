@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c757dx0vn85du"]
+[gd_scene load_steps=5 format=3 uid="uid://c757dx0vn85du"]
 
 [ext_resource type="PackedScene" uid="uid://bendp5tmwcsg1" path="res://Scenes/planet.tscn" id="1_jj0rg"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_l6q8o"]
 [ext_resource type="Texture2D" uid="uid://byi8jxqj4bkbn" path="res://Sprites/Backgrounds/fondo_1.png" id="3_o72yn"]
+[ext_resource type="PackedScene" uid="uid://gvqb5dna50qr" path="res://sub_res/marvin.tscn" id="4_bhma1"]
 
 [node name="Level1" type="Node2D"]
 position = Vector2(-964, -552)
@@ -34,3 +35,10 @@ z_index = -5
 position = Vector2(965.5, 540)
 scale = Vector2(1.03073, 1.04444)
 texture = ExtResource("3_o72yn")
+
+[node name="Control" parent="." instance=ExtResource("4_bhma1")]
+offset_left = -30.0
+offset_top = 82.0
+offset_right = 1120.0
+offset_bottom = 732.0
+scale = Vector2(1.73982, 1.58969)

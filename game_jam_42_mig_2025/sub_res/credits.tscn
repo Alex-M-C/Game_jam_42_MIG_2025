@@ -10,10 +10,11 @@
 script = ExtResource("1_tnduw")
 
 [node name="credits" type="RichTextLabel" parent="."]
-offset_left = 348.0
-offset_top = 108.0
-offset_right = 799.0
-offset_bottom = 645.0
+z_index = 13
+offset_left = 728.0
+offset_top = 327.0
+offset_right = 1179.0
+offset_bottom = 864.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_gqbnq")
@@ -37,5 +38,17 @@ script = ExtResource("4_bysfn")
 [node name="Terranova" parent="." instance=ExtResource("4_kka24")]
 position = Vector2(1539, 514)
 scale = Vector2(1.39, 1.39)
+
+[node name="Saturn" parent="." instance=ExtResource("4_kka24")]
+position = Vector2(1017, 729)
+scale = Vector2(1.9321, 1.9321)
+
+[node name="Uranus" parent="." instance=ExtResource("4_kka24")]
+position = Vector2(309, 260)
+scale = Vector2(1.163, 1.163)
+
+[node name="Moon" parent="." instance=ExtResource("4_kka24")]
+position = Vector2(342, 781)
+scale = Vector2(0.783, 0.783)
 
 [connection signal="button_down" from="Button" to="Button" method="_on_button_down"]

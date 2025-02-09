@@ -105,5 +105,5 @@ stream = ExtResource("5_h45ku")
 script = ExtResource("6_k0f83")
 
 [connection signal="button_down" from="GridContainer/Play" to="GridContainer/Play" method="_on_button_down"]
-[connection signal="button_down" from="GridContainer/Credits" to="GridContainer/Play" method="_on_credits_button_down"]
+[connection signal="button_down" from="GridContainer/Credits" to="GridContainer/Credits" method="_on_button_down"]
 [connection signal="button_down" from="GridContainer/Exit" to="GridContainer/Exit" method="_on_button_down"]
