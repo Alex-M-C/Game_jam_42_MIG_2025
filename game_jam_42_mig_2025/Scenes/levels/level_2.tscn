@@ -29,7 +29,7 @@ planet_status = 1
 
 [node name="Lumia" parent="." instance=ExtResource("2_j58th")]
 position = Vector2(1246, 322)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.195, 1.195)
 area_size = 50.0
 radius = 100.0
 label_height = -150.0
