@@ -31,10 +31,12 @@ func _process(delta):
 func _on_area_clicked(viewport, event, shape_idx, area):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var area_center = area.global_position
+		var planet = area.get_parent()
 		if not is_drawing:
-			start_position = to_local(area_center)
-			valid_area = area
-			is_drawing = true
+			if planet.planet_status == 1:
+				start_position = to_local(area_center)
+				valid_area = area
+				is_drawing = true
 		elif area != valid_area:
 			end_position = to_local(area_center)
 			# Dibujar la línea momentáneamente

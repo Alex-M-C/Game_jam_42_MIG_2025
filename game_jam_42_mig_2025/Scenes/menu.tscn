@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dh68if8874lq0"]
+[gd_scene load_steps=11 format=3 uid="uid://dh68if8874lq0"]
 
 [ext_resource type="Script" path="res://Scripts/Exit_buttom.gd" id="1_jy4b6"]
 [ext_resource type="Script" path="res://Scripts/Play_buttom.gd" id="1_keypp"]
 [ext_resource type="Texture2D" uid="uid://byi8jxqj4bkbn" path="res://Sprites/Backgrounds/fondo_1.png" id="1_sbxct"]
+[ext_resource type="FontFile" uid="uid://jncafd0wniem" path="res://Fonts/Game Of Squids.otf" id="2_en5va"]
+[ext_resource type="Texture2D" uid="uid://cnourar2w4s75" path="res://Sprites/Sin_título-removebg-preview.png" id="2_sf6tj"]
 [ext_resource type="PackedScene" uid="uid://bendp5tmwcsg1" path="res://Scenes/planet.tscn" id="4_yqfyk"]
 [ext_resource type="AudioStream" uid="uid://caxyyv1nbiq03" path="res://mmusica/Galactic Odyssey.wav" id="5_h45ku"]
 [ext_resource type="Script" path="res://Scripts/audio_stream_player_game.gd" id="6_k0f83"]
@@ -30,14 +32,24 @@ offset_bottom = 3226.0
 scale = Vector2(0.444129, 0.368548)
 texture = ExtResource("1_sbxct")
 
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+offset_left = 943.42
+offset_top = 233.348
+offset_right = 5611.42
+offset_bottom = 3519.35
+scale = Vector2(0.639408, 0.520281)
+texture = ExtResource("2_sf6tj")
+
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -123.5
-offset_right = 123.5
+offset_left = -243.0
+offset_top = 497.0
+offset_right = 254.0
+offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -47,13 +59,15 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-text = "MENU"
+theme_override_fonts/font = ExtResource("2_en5va")
+text = "main mENU"
 label_settings = SubResource("LabelSettings_4c0w1")
 
 [node name="Play" type="Button" parent="GridContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = SubResource("Theme_afj6f")
+theme_override_fonts/font = ExtResource("2_en5va")
 text = "PLAY"
 script = ExtResource("1_keypp")
 
@@ -61,12 +75,14 @@ script = ExtResource("1_keypp")
 layout_mode = 2
 size_flags_vertical = 6
 theme = SubResource("Theme_afj6f")
+theme_override_fonts/font = ExtResource("2_en5va")
 text = "CREDITS"
 
 [node name="Exit" type="Button" parent="GridContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = SubResource("Theme_afj6f")
+theme_override_fonts/font = ExtResource("2_en5va")
 text = "EXIT"
 script = ExtResource("1_jy4b6")
 

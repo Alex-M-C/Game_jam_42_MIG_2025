@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddgntjnfue4qr"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_g3u2b"]
+[ext_resource type="Script" path="res://Scripts/ia_tonta.gd" id="2_cxj5i"]
+[ext_resource type="PackedScene" uid="uid://bendp5tmwcsg1" path="res://Scenes/planet.tscn" id="3_62a34"]
+[ext_resource type="Texture2D" uid="uid://daqwvtygvfy1o" path="res://Sprites/Backgrounds/fondo_6.png" id="4_geo32"]
+
+[node name="level_2" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("planets")]
+script = ExtResource("1_g3u2b")
+planets = [NodePath("../Terranova"), NodePath("../Jupiter"), NodePath("../Moon"), NodePath("../Neptune"), NodePath("../Earth")]
+
+[node name="Node2D" type="Node2D" parent="GameManager" node_paths=PackedStringArray("game_manager")]
+script = ExtResource("2_cxj5i")
+game_manager = NodePath("..")
+
+[node name="Terranova" parent="." instance=ExtResource("3_62a34")]
+position = Vector2(363, 721)
+scale = Vector2(1.005, 1.005)
+area_size = 50.0
+radius = 100.0
+label_height = -125.0
+spawn_time = 1.0
+planet_status = 1
+
+[node name="Jupiter" parent="." instance=ExtResource("3_62a34")]
+position = Vector2(1575, 545)
+scale = Vector2(1.44, 1.44)
+spawn_time = 2.0
+planet_status = 2
+
+[node name="Moon" parent="." instance=ExtResource("3_62a34")]
+position = Vector2(979, 293)
+scale = Vector2(1.005, 1.005)
+spawn_time = 3.0
+poblation = 25
+planet_status = 2
+
+[node name="Neptune" parent="." instance=ExtResource("3_62a34")]
+position = Vector2(1227, 782)
+scale = Vector2(1.145, 1.145)
+spawn_time = 3.0
+poblation = 20
+planet_status = 2
+
+[node name="Earth" parent="." instance=ExtResource("3_62a34")]
+position = Vector2(318, 324)
+scale = Vector2(0.72, 0.72)
+spawn_time = 1.0
+planet_status = 1
+
+[node name="Fondo3" type="Sprite2D" parent="."]
+z_index = -8
+position = Vector2(967, 534.5)
+scale = Vector2(1.03021, 1.03056)
+texture = ExtResource("4_geo32")

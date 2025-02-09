@@ -18,36 +18,25 @@ game_manager = NodePath("..")
 [node name="Uranus" parent="." instance=ExtResource("2_wkrq4")]
 position = Vector2(353, 594)
 scale = Vector2(1.005, 1.005)
-area_size = 50.0
-radius = 100.0
-label_height = -150.0
 spawn_time = 1.0
 poblation = 30
 
 [node name="Saturn" parent="." instance=ExtResource("2_wkrq4")]
 position = Vector2(1032, 740)
 scale = Vector2(1.44, 1.44)
-area_size = 50.0
-radius = 100.0
-label_height = -150.0
+area_size = 75.0
 spawn_time = 1.0
 planet_status = 1
 
 [node name="Moon" parent="." instance=ExtResource("2_wkrq4")]
 position = Vector2(1775, 396)
 scale = Vector2(1.005, 1.005)
-area_size = 50.0
-radius = 100.0
-label_height = -150.0
 spawn_time = 1.0
 poblation = 25
 
 [node name="Neptune" parent="." instance=ExtResource("2_wkrq4")]
 position = Vector2(1284, 290)
 scale = Vector2(1.145, 1.145)
-area_size = 50.0
-radius = 100.0
-label_height = -150.0
 spawn_time = 2.0
 poblation = 20
 planet_status = 2
@@ -55,9 +44,6 @@ planet_status = 2
 [node name="Venus" parent="." instance=ExtResource("2_wkrq4")]
 position = Vector2(756, 245)
 scale = Vector2(0.72, 0.72)
-area_size = 50.0
-radius = 100.0
-label_height = -150.0
 spawn_time = 1.0
 poblation = 20
 
