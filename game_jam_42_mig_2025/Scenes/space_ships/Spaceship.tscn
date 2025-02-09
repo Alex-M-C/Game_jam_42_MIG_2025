@@ -1,12 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3g50c8o0j6dl"]
 
 [ext_resource type="Script" path="res://Scripts/spaceship.gd" id="1_1rrn3"]
-[ext_resource type="Texture2D" uid="uid://c8flq2amstelv" path="res://Sprites/space_ships/human_ship/frame_0.png" id="2_uddak"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ymtec"]
+load_path = "res://.godot/imported/frame_0.png-82bb2b18acba2e4dfa7f5fda6a2d793f.ctex"
 
 [node name="Spaceship" type="CharacterBody2D"]
 z_index = -1
 script = ExtResource("1_1rrn3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0782407, 0.0671297)
-texture = ExtResource("2_uddak")
+position = Vector2(3.8147e-06, 1.90735e-06)
+scale = Vector2(0.166696, 0.161844)
+texture = SubResource("CompressedTexture2D_ymtec")
