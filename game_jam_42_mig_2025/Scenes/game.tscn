@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj8cma3p6fn87"]
+[gd_scene load_steps=8 format=3 uid="uid://cj8cma3p6fn87"]
 
 [ext_resource type="PackedScene" uid="uid://c757dx0vn85du" path="res://Scenes/levels/level_1.tscn" id="1_3w1ew"]
 [ext_resource type="Script" path="res://Scripts/Menu_buttom.gd" id="1_jse1g"]
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_ro5p5"]
 [ext_resource type="Script" path="res://Scripts/audio_stream_player_menu.gd" id="3_2dg0g"]
+[ext_resource type="PackedScene" uid="uid://dyq8tyn74prt1" path="res://Scenes/levels/level_2.tscn" id="3_tewhx"]
+[ext_resource type="PackedScene" uid="uid://pa2b0a2h0mhl" path="res://Scenes/levels/level_3.tscn" id="4_jclry"]
+[ext_resource type="PackedScene" uid="uid://ddgntjnfue4qr" path="res://Scenes/levels/level_4.tscn" id="5_rt1qv"]
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_ro5p5")
+arraylevel = Array[PackedScene]([ExtResource("1_3w1ew"), ExtResource("3_tewhx"), ExtResource("4_jclry"), ExtResource("5_rt1qv")])
 
 [node name="Button" type="Button" parent="."]
 offset_left = 899.0
@@ -15,9 +21,6 @@ text = "MENU"
 script = ExtResource("1_jse1g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Level1" parent="." instance=ExtResource("1_3w1ew")]
-position = Vector2(-941, -519)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("3_2dg0g")

@@ -33,6 +33,7 @@ scale = Vector2(0.444129, 0.368548)
 texture = ExtResource("1_sbxct")
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
 offset_left = 943.42
 offset_top = 233.348
 offset_right = 5611.42

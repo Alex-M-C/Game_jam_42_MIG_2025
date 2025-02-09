@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp6hbo8o2ql6o"]
+
+[ext_resource type="FontFile" uid="uid://jncafd0wniem" path="res://Fonts/Game Of Squids.otf" id="1_pc5o7"]
+[ext_resource type="Texture2D" uid="uid://b3l5c32ib8xs5" path="res://marvin2.png" id="2_4lmcm"]
+
+[node name="Panel" type="Panel"]
+modulate = Color(1, 1, 1, 0.537255)
+self_modulate = Color(1, 1, 1, 0.537255)
+z_index = 6
+offset_left = -778.0
+offset_top = -283.0
+offset_right = 802.0
+offset_bottom = 295.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 178.0
+offset_right = 1217.0
+offset_bottom = 366.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pc5o7")
+theme_override_font_sizes/font_size = 150
+text = "¡¡DERROTA!!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1263.0
+offset_top = 475.0
+offset_right = 1553.0
+offset_bottom = 560.0
+theme_override_fonts/font = ExtResource("1_pc5o7")
+theme_override_font_sizes/font_size = 40
+text = "Retry"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(149, 372)
+texture = ExtResource("2_4lmcm")

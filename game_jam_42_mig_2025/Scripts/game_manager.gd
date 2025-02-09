@@ -6,6 +6,11 @@ var is_drawing: bool = false
 var valid_area: Area2D = null  # Última área seleccionada
 var is_over_area: bool = false  # Indica si el ratón está sobre un área válida
 var line: Line2D
+var game_over: int = 0
+
+const VICTORY_PANEL = preload("res://Scenes/menus/victory_panel.tscn")
+const DEFEAT_PANEL = preload("res://Scenes/menus/defeat_panel.tscn")
+
 func _ready():
 	# Crear la línea que será usada para dibujar
 	line = Line2D.new()
@@ -28,6 +33,23 @@ func _process(delta):
 		line.clear_points()
 		line.add_point(start_position)
 		line.add_point(end_position)
+		
+	check_victory()
+
+func check_victory():
+	var i : int = 0
+	var j : int = 0
+	for planet in planets:
+		if planet.planet_status == 1:  # Si algún planeta no tiene el status 1 (humanos), no ha ganado
+			i += 1
+		if planet.planet_status == 2:  # Si algún planeta no tiene el status 1 (humanos), no ha ganado
+			j += 1
+	
+	if i == planets.size():
+		game_over = 1
+	elif j == planets.size():
+		game_over = 2
+
 func _on_area_clicked(viewport, event, shape_idx, area):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var area_center = area.global_position

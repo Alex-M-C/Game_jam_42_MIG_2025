@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://daqwvtygvfy1o" path="res://Sprites/Backgrounds/fondo_6.png" id="4_geo32"]
 
 [node name="level_2" type="Node2D"]
+position = Vector2(-969, -519)
 
 [node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("planets")]
 script = ExtResource("1_g3u2b")

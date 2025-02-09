@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr8vwigbjgl3e"]
+
+[ext_resource type="FontFile" uid="uid://jncafd0wniem" path="res://Fonts/Game Of Squids.otf" id="1_6fie2"]
+[ext_resource type="Texture2D" uid="uid://b8txdmct2s62k" path="res://marvin4.2.png" id="2_0qglk"]
+
+[node name="Panel" type="Panel"]
+z_index = 6
+offset_left = -789.0
+offset_top = -285.0
+offset_right = 791.0
+offset_bottom = 293.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 178.0
+offset_right = 1217.0
+offset_bottom = 366.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_6fie2")
+theme_override_font_sizes/font_size = 150
+text = "¡¡VICTORIA!!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1263.0
+offset_top = 475.0
+offset_right = 1553.0
+offset_bottom = 560.0
+theme_override_fonts/font = ExtResource("1_6fie2")
+theme_override_font_sizes/font_size = 40
+text = "Next Level"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(157, 369)
+texture = ExtResource("2_0qglk")
