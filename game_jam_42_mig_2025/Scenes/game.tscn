@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj8cma3p6fn87"]
+[gd_scene load_steps=4 format=3 uid="uid://cj8cma3p6fn87"]
 
 [ext_resource type="PackedScene" uid="uid://c757dx0vn85du" path="res://Scenes/levels/level_1.tscn" id="1_3w1ew"]
 [ext_resource type="Script" path="res://Scripts/Menu_buttom.gd" id="1_jse1g"]
+[ext_resource type="Script" path="res://Scripts/audio_stream_player_menu.gd" id="3_2dg0g"]
 
 [node name="game" type="Node2D"]
 
@@ -17,5 +18,8 @@ script = ExtResource("1_jse1g")
 
 [node name="Level1" parent="." instance=ExtResource("1_3w1ew")]
 position = Vector2(-941, -519)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_2dg0g")
 
 [connection signal="button_down" from="Button" to="Button" method="_on_button_down"]

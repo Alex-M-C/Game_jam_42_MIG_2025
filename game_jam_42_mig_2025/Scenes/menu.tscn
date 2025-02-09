@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh68if8874lq0"]
+[gd_scene load_steps=9 format=3 uid="uid://dh68if8874lq0"]
 
 [ext_resource type="Script" path="res://Scripts/Exit_buttom.gd" id="1_jy4b6"]
 [ext_resource type="Script" path="res://Scripts/Play_buttom.gd" id="1_keypp"]
 [ext_resource type="Texture2D" uid="uid://byi8jxqj4bkbn" path="res://Sprites/Backgrounds/fondo_1.png" id="1_sbxct"]
 [ext_resource type="PackedScene" uid="uid://bendp5tmwcsg1" path="res://Scenes/planet.tscn" id="4_yqfyk"]
+[ext_resource type="AudioStream" uid="uid://caxyyv1nbiq03" path="res://mmusica/Galactic Odyssey.wav" id="5_h45ku"]
+[ext_resource type="Script" path="res://Scripts/audio_stream_player_game.gd" id="6_k0f83"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4c0w1"]
 font_size = 82
@@ -73,11 +75,15 @@ position = Vector2(285, 188)
 
 [node name="Saturn" parent="." instance=ExtResource("4_yqfyk")]
 position = Vector2(1603, 549)
-scale = Vector2(1.78464, 1.83653)
+scale = Vector2(2.015, 2.015)
 
 [node name="Mars" parent="." instance=ExtResource("4_yqfyk")]
 position = Vector2(505, 741)
-scale = Vector2(0.769125, 0.745038)
+scale = Vector2(0.725, 0.725)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_h45ku")
+script = ExtResource("6_k0f83")
 
 [connection signal="button_down" from="GridContainer/Play" to="GridContainer/Play" method="_on_button_down"]
 [connection signal="button_down" from="GridContainer/Exit" to="GridContainer/Exit" method="_on_button_down"]
