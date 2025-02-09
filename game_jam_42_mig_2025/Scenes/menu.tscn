@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dh68if8874lq0"]
+[gd_scene load_steps=12 format=3 uid="uid://dh68if8874lq0"]
 
 [ext_resource type="Script" path="res://Scripts/Exit_buttom.gd" id="1_jy4b6"]
 [ext_resource type="Script" path="res://Scripts/Play_buttom.gd" id="1_keypp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cnourar2w4s75" path="res://Sprites/Sin_título-removebg-preview.png" id="2_sf6tj"]
 [ext_resource type="PackedScene" uid="uid://bendp5tmwcsg1" path="res://Scenes/planet.tscn" id="4_yqfyk"]
 [ext_resource type="AudioStream" uid="uid://caxyyv1nbiq03" path="res://mmusica/Galactic Odyssey.wav" id="5_h45ku"]
+[ext_resource type="Script" path="res://Scripts/Credits_buttom.gd" id="5_nc58f"]
 [ext_resource type="Script" path="res://Scripts/audio_stream_player_game.gd" id="6_k0f83"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4c0w1"]
@@ -78,6 +79,7 @@ size_flags_vertical = 6
 theme = SubResource("Theme_afj6f")
 theme_override_fonts/font = ExtResource("2_en5va")
 text = "CREDITS"
+script = ExtResource("5_nc58f")
 
 [node name="Exit" type="Button" parent="GridContainer"]
 layout_mode = 2
@@ -103,4 +105,5 @@ stream = ExtResource("5_h45ku")
 script = ExtResource("6_k0f83")
 
 [connection signal="button_down" from="GridContainer/Play" to="GridContainer/Play" method="_on_button_down"]
+[connection signal="button_down" from="GridContainer/Credits" to="GridContainer/Play" method="_on_credits_button_down"]
 [connection signal="button_down" from="GridContainer/Exit" to="GridContainer/Exit" method="_on_button_down"]

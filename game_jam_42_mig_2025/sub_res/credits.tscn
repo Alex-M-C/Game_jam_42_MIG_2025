@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsw0xwuapw8i2"]
+
+[ext_resource type="Script" path="res://sub_res/Credits.gd" id="1_tnduw"]
+[ext_resource type="AudioStream" uid="uid://b4uh8dc4nt68i" path="res://sub_res/Credits.mp3" id="2_gqbnq"]
+[ext_resource type="Texture2D" uid="uid://rthpit21kppt" path="res://Sprites/fondo_5.png" id="3_x3rs6"]
+[ext_resource type="Script" path="res://Scripts/Menu_buttom.gd" id="4_bysfn"]
+[ext_resource type="PackedScene" uid="uid://bendp5tmwcsg1" path="res://Scenes/planet.tscn" id="4_kka24"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_tnduw")
+
+[node name="credits" type="RichTextLabel" parent="."]
+offset_left = 348.0
+offset_top = 108.0
+offset_right = 799.0
+offset_bottom = 645.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_gqbnq")
+pitch_scale = 0.62
+parameters/looping = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(929, 514)
+scale = Vector2(1.07546, 1.09396)
+texture = ExtResource("3_x3rs6")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1858.0
+offset_top = 4.0
+offset_right = 1915.0
+offset_bottom = 35.0
+text = "MENU"
+script = ExtResource("4_bysfn")
+
+[node name="Terranova" parent="." instance=ExtResource("4_kka24")]
+position = Vector2(1539, 514)
+scale = Vector2(1.39, 1.39)
+
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]

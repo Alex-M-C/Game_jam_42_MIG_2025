@@ -1,6 +1,6 @@
 extends Button
 
-const target_scene_path: String = "res://sub_res/credits.tscn"  # Ruta de la escena de destino
+const target_scene_path: String = "res://Scenes/game.tscn"  # Ruta de la escena de destino
 
 func change_scene() -> void:
 	if target_scene_path:
@@ -12,8 +12,4 @@ func _on_Button_pressed() -> void:
 	change_scene()
 
 func _on_button_down() -> void:
-	change_scene()
-
-
-func _on_credits_button_down() -> void:
 	change_scene()
