@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c757dx0vn85du"]
+[gd_scene load_steps=4 format=3 uid="uid://c757dx0vn85du"]
 
 [ext_resource type="PackedScene" uid="uid://bendp5tmwcsg1" path="res://Scenes/planet.tscn" id="1_jj0rg"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_l6q8o"]
+[ext_resource type="Texture2D" uid="uid://byi8jxqj4bkbn" path="res://Sprites/Backgrounds/fondo_1.png" id="3_o72yn"]
 
 [node name="Level1" type="Node2D"]
 
@@ -27,3 +28,9 @@ position = Vector2(347, 428)
 scale = Vector2(0.835, 0.835)
 spawn_time = 1.0
 poblation = 10
+
+[node name="Fondo1" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(965.5, 540)
+scale = Vector2(1.03073, 1.04444)
+texture = ExtResource("3_o72yn")
