@@ -57,7 +57,7 @@ func _update_label_color():
 	if planet_status == 0:
 		label.add_theme_color_override("font_color", Color(255, 255, 255))  # Neutral
 	elif planet_status == 1:
-		label.add_theme_color_override("font_color", Color(0, 0, 255))  # Humanos
+		label.add_theme_color_override("font_color", Color(0.1, 0.7, 255))  # Humanos
 	elif planet_status == 2:
 		label.add_theme_color_override("font_color", Color(255, 0, 0))  # Enemigos
 	elif planet_status == 3:

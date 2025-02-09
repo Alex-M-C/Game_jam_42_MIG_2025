@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cis1d1us63f2m"]
+[gd_scene load_steps=4 format=3 uid="uid://dyq8tyn74prt1"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_asdir"]
-[ext_resource type="Script" path="res://Scripts/ia_tonta.gd" id="2_b2hhb"]
 [ext_resource type="PackedScene" uid="uid://bendp5tmwcsg1" path="res://Scenes/planet.tscn" id="2_j58th"]
+[ext_resource type="Texture2D" uid="uid://dic63n1sgeqk1" path="res://Sprites/Backgrounds/fondo_2.png" id="3_aqxyu"]
 
 [node name="level_2" type="Node2D"]
 
@@ -10,19 +10,13 @@
 script = ExtResource("1_asdir")
 planets = [NodePath("../Terranova"), NodePath("../Mictlan"), NodePath("../Lumia"), NodePath("../Yuley")]
 
-[node name="IA" type="Node2D" parent="GameManager" node_paths=PackedStringArray("game_manager")]
-script = ExtResource("2_b2hhb")
-game_manager = NodePath("..")
-decision_interval = 7.0
-
 [node name="Terranova" parent="." instance=ExtResource("2_j58th")]
 position = Vector2(629, 675)
-scale = Vector2(1.83, 1.83)
+scale = Vector2(1.505, 1.505)
 area_size = 50.0
 radius = 100.0
 label_height = -150.0
 spawn_time = 1.0
-planet_status = 1
 
 [node name="Mictlan" parent="." instance=ExtResource("2_j58th")]
 position = Vector2(308, 273)
@@ -31,7 +25,7 @@ radius = 100.0
 label_height = -150.0
 spawn_time = 2.0
 poblation = 15
-planet_status = 2
+planet_status = 1
 
 [node name="Lumia" parent="." instance=ExtResource("2_j58th")]
 position = Vector2(1246, 322)
@@ -51,3 +45,9 @@ label_height = -150.0
 spawn_time = 1.0
 poblation = 20
 planet_status = 2
+
+[node name="Fondo3" type="Sprite2D" parent="."]
+z_index = -8
+position = Vector2(967, 534.5)
+scale = Vector2(1.03021, 1.03056)
+texture = ExtResource("3_aqxyu")
