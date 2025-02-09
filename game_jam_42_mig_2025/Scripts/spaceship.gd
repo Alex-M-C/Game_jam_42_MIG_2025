@@ -27,32 +27,43 @@ func _ready():
 		spaceship_textures.append(load(texture_path))
 func _process(delta):
 	if is_traveling:
-		# Moverse linealmente hacia el destino
+		# Mover la nave en la dirección del destino
 		var current_pos = global_position
 		var direction = (destination - current_pos).normalized()
-		# Calcula la distancia que se moverá en este frame
 		var step = travel_speed * delta
+		# Si está cerca del destino, detenerse
 		if global_position.distance_to(destination) <= step:
 			global_position = destination
 			is_traveling = false
-			# Reanexar la nave al planeta destino usando la variable target_planet
 			if target_planet:
 				var current_global = global_position
 				get_parent().remove_child(self)
 				target_planet.add_child(self)
 				position = target_planet.to_local(current_global)
-				# Reinicia la órbita, si es necesario
 				angle = 0.0
 				offset_angle = randf() * 2 * PI
-				target_planet = null  # Limpiar la referencia tras reanexar
+				target_planet = null
 		else:
 			global_position += direction * step
-		# Actualiza la animación (si lo deseas) usando el ángulo acumulado o incluso
-		# podrías pausar la animación de órbita durante el viaje.
-		var frame_index = int((angle + offset_angle) / (2 * PI) * NUM_FRAMES) % NUM_FRAMES
-		spaceship_sprite.texture = spaceship_textures[frame_index]
+		# --- SELECCIONAR EL SPRITE CORRECTO ---
+		var angle_degrees = rad_to_deg(atan2(-direction.y, direction.x))  # Invertimos Y porque en Godot el eje Y crece hacia abajo
+		if angle_degrees < 0:
+			angle_degrees += 360  # Convertimos valores negativos a positivos
+		# **Lista extendida de ángulos y sus sprites correctos**
+		var angles = [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5]
+		var sprites = [51, 46, 40, 37, 33, 30, 28, 24, 15, 11, 7, 4, 71, 67, 60, 56]
+		# Encontramos el ángulo más cercano
+		var closest_index = 0
+		var min_diff = 360
+		for i in range(angles.size()):
+			var diff = abs(angle_degrees - angles[i])
+			if diff < min_diff:
+				min_diff = diff
+				closest_index = i
+		# Asignar el sprite correcto según la dirección
+		spaceship_sprite.texture = spaceship_textures[sprites[closest_index]]
 	else:
-		# Modo órbita: se asume que la nave es hija del planeta en el que orbita
+		# --- ORBITA NORMAL ---
 		angle += ORBIT_SPEED * delta
 		position = Vector2(
 			ORBIT_RADIUS_X * cos(angle + offset_angle),
@@ -60,7 +71,7 @@ func _process(delta):
 		)
 		var frame_index = int((angle + offset_angle) / (2 * PI) * NUM_FRAMES) % NUM_FRAMES
 		spaceship_sprite.texture = spaceship_textures[frame_index]
-		# Se ajusta el z_index según el seno (para simular profundidad)
+		# Ajuste de profundidad
 		z_index = get_parent().z_index + (1 if sin(angle + offset_angle) >= 0 else -1)
 # Función para iniciar el viaje hacia una posición destino
 func travel_to(dest: Vector2, new_planet: Node = null) -> void:
