@@ -1,6 +1,6 @@
 extends Node2D
-const area_size = 100.0
-const radius = 150.0
+@export var area_size = 100.0
+@export var radius = 150.0
 var is_active = false
 var angle_offset = 0.0
 var i : int = 0
@@ -8,6 +8,7 @@ var in_battle: bool = false
 @onready var collision_shape: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var label = $Label
+@export var label_height : float = -175
 @export var spaceship_scene: PackedScene
 @export var spawn_time: float = 5.0
 @export var poblation: int = 42
@@ -20,6 +21,7 @@ func _ready():
 	
 	animated_sprite.play(get_node(".").name)
 	_update_label_color()
+	label.position.y = label_height
 	timer = Timer.new()
 	timer.wait_time = spawn_time
 	timer.autostart = true

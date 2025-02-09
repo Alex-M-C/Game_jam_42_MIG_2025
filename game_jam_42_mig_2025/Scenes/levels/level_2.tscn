@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://cis1d1us63f2m"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_asdir"]
+[ext_resource type="Script" path="res://Scripts/ia_tonta.gd" id="2_b2hhb"]
+[ext_resource type="PackedScene" uid="uid://bendp5tmwcsg1" path="res://Scenes/planet.tscn" id="2_j58th"]
+
+[node name="level_2" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("planets")]
+script = ExtResource("1_asdir")
+planets = [NodePath("../Terranova"), NodePath("../Mictlan"), NodePath("../Lumia"), NodePath("../Yuley")]
+
+[node name="IA" type="Node2D" parent="GameManager" node_paths=PackedStringArray("game_manager")]
+script = ExtResource("2_b2hhb")
+game_manager = NodePath("..")
+decision_interval = 7.0
+
+[node name="Terranova" parent="." instance=ExtResource("2_j58th")]
+position = Vector2(629, 675)
+scale = Vector2(1.83, 1.83)
+area_size = 50.0
+radius = 100.0
+label_height = -150.0
+spawn_time = 1.0
+planet_status = 1
+
+[node name="Mictlan" parent="." instance=ExtResource("2_j58th")]
+position = Vector2(308, 273)
+area_size = 50.0
+radius = 100.0
+label_height = -150.0
+spawn_time = 2.0
+poblation = 15
+planet_status = 2
+
+[node name="Lumia" parent="." instance=ExtResource("2_j58th")]
+position = Vector2(1246, 322)
+scale = Vector2(1.5, 1.5)
+area_size = 50.0
+radius = 100.0
+label_height = -150.0
+spawn_time = 1.0
+poblation = 25
+
+[node name="Yuley" parent="." instance=ExtResource("2_j58th")]
+position = Vector2(1512, 798)
+scale = Vector2(1.7, 1.7)
+area_size = 50.0
+radius = 100.0
+label_height = -150.0
+spawn_time = 1.0
+poblation = 20
+planet_status = 2
