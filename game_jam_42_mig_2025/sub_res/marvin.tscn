@@ -33,6 +33,7 @@ animations = [{
 }]
 
 [node name="Control" type="Control"]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_left = 2.0
@@ -56,6 +57,7 @@ sprite_frames = SubResource("SpriteFrames_g3a7y")
 autoplay = "default"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 10
 layout_mode = 1
 anchors_preset = -1
 offset_left = 735.0
